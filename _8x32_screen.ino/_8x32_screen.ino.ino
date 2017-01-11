@@ -34,8 +34,8 @@ byte typical_brightness = 20;
 byte max_brightness = 255; 
 
 typedef void (*SimplePatternList[])();
-//SimplePatternList gPatterns = { rainbowWithGlitter, strobe, sinelon, bpm, juggle, confetti, randy, rainbow };
-SimplePatternList gPatterns = { countdown };
+SimplePatternList gPatterns = { rainbowWithGlitter, strobe, sinelon, bpm, juggle, confetti, randy, rainbow };
+//SimplePatternList gPatterns = { countdown };
 
 void setup() {
   LEDS.addLeds<OCTOWS2811>(leds, NUM_LEDS_PER_STRIP);
@@ -51,6 +51,8 @@ void loop() {
   
   EVERY_N_MILLISECONDS( 20 ) { hue++; } // slowly cycle the "base color" through the rainbow
   EVERY_N_SECONDS( 20 ) { nextPattern(); } // change patterns periodically
+
+  delay(33) //limit to about 30 frames per second.
 }
 
 //all
